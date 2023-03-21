@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+  *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+
+  
+  .card{
+    width: 230px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+     
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-align: center;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+  }
+  
+    .card:first-of-type{
+      margin-right: 25px;
+    }
+  
+    .card:hover{
+      margin-top: -10px;
+    }
+  
+  .banner{
+    height: 100px;
+    width: 100%;
+    padding-top: 30px;
+    background-color: #FAFAFA;
+    background-size: cover;
+    background-position: center;
+  }
+  
+    .card:first-of-type .banner{
+      background-image: url("https://images.unsplash.com/photo-1570631810485-911f9516d8d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80");
+    }
+  
+  .avatar{
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-color: #F1F1F1;
+    border-radius: 100%;
+  }
+  
+    .card:nth-child(1) .avatar{
+      background-image: url("https://cdn-icons-png.flaticon.com/512/6596/6596121.png");
+    }
+  
+  h3, a, i{
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+  }
+  
+    h3{
+      margin-top: 45px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      color: #212121;
+    }
+  
+
+ 
+  
+
+</style>
+
+
+
+{% if contacts %}
+<div class="container-fluid" style="padding: 8rem 30px 21rem 30px;">
+  {% for contact in contacts %}
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2 col-6" >
+          <div class="card">
+            <div class="banner">
+               <div class="avatar"></div>
+            </div>
+           <h3>{{ contact.name }} ( {{ contact.gender }})</h3>
+         
+            <a href="">📧 {{ contact.email }}</a>
+            <a href="{{ contact.phone_number }}">📱 {{ contact.phone_number }}</a>
+           <p>{{ contact.Address }}</p>
+          </div>
+        </div>
+  {% endfor %}
+  </div>
+
+</div>
+
+{% else %}
+<p class="d-block font-weight-light header my-2 mx-2">You have not saved any contacts yet!</p>
+{% endif %}
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
